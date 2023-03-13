@@ -15,7 +15,6 @@ public class Exercicio2 {
 			lista.add(valorLista);
 
 		}
-		
 		JOptionPane.showMessageDialog(null, lista);
 	}
 
