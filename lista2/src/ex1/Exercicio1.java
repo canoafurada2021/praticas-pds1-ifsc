@@ -20,6 +20,8 @@ public class Exercicio1 extends JFrame {
 	private JTextField textAtivado;
 	private JButton btnCadastrar;
 	private JButton btnExibir;
+	private ArrayList<Double> listaNumeros;
+	private int contapar;
 
 	/**
 	 * Launch the application.
@@ -41,9 +43,9 @@ public class Exercicio1 extends JFrame {
 	 * Create the frame.
 	 */
 	public Exercicio1() {
-
-		ArrayList<Double> listaNumeros = new ArrayList<Double>();
-
+		// instanciando arraylist
+		listaNumeros = new ArrayList<Double>();
+		contapar = 0;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -53,13 +55,13 @@ public class Exercicio1 extends JFrame {
 		contentPane.setLayout(null);
 
 		textAtivado = new JTextField();
-		textAtivado.setBounds(144, 10, 109, 20);
+		textAtivado.setBounds(174, 10, 109, 20);
 		contentPane.add(textAtivado);
 		textAtivado.setColumns(10);
 
 		textFieldDesativado = new JTextField();
 		textFieldDesativado.setEnabled(false);
-		textFieldDesativado.setBounds(145, 73, 108, 20);
+		textFieldDesativado.setBounds(175, 74, 108, 20);
 		contentPane.add(textFieldDesativado);
 		textFieldDesativado.setColumns(10);
 
@@ -67,25 +69,27 @@ public class Exercicio1 extends JFrame {
 		lblCadastro.setBounds(10, 13, 108, 14);
 		contentPane.add(lblCadastro);
 
-		JLabel lblResultado = new JLabel("Resultado");
-		lblResultado.setBounds(10, 76, 86, 14);
+		JLabel lblResultado = new JLabel("Quantidade de números pares");
+		lblResultado.setBounds(10, 76, 155, 17);
 		contentPane.add(lblResultado);
 
 		btnCadastrar = new JButton("CADASTRAR");
 		btnCadastrar.setBounds(41, 151, 118, 33);
 
 		btnCadastrar.addActionListener(new ActionListener() {
-//ação do botao de cadastrar
-			public void actionPerformed(ActionEvent e) {
 
-				for (int i = 0; i < 5; i++) {
-					Double numeros = Double.parseDouble(textAtivado.getText());
+			public void actionPerformed(ActionEvent e) {
+				String numerosStr = textAtivado.getText();
+
+				if (!numerosStr.isEmpty()) {
+					Double numeros = Double.valueOf(numerosStr);
 
 					listaNumeros.add(numeros);
-
+					JOptionPane.showMessageDialog(null, "Numero cadastrado!");
+				} else {
+					JOptionPane.showMessageDialog(null, "Por favor, digite um número para poder cadastrá-lo!");
 				}
-				
-System.out.println(listaNumeros.size());
+
 			}
 
 		});
@@ -93,6 +97,26 @@ System.out.println(listaNumeros.size());
 
 		btnExibir = new JButton("EXIBIR");
 		btnExibir.setBounds(234, 151, 118, 33);
+		btnExibir.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				String numeroStr = textAtivado.getText();
+
+				Double numeros = Double.valueOf(numeroStr);
+
+				for (Double teste : listaNumeros) {
+					System.out.println(teste);
+					
+					if (teste % 2 == 0) {
+						contapar++;
+
+					}	
+				}
+				
+				textFieldDesativado.setText(String.valueOf(contapar));
+			}
+
+		});
 		contentPane.add(btnExibir);
 	}
 
