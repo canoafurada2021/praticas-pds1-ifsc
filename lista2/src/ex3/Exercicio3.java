@@ -30,18 +30,18 @@ public class Exercicio3 extends JFrame {
 	private JLabel lblNascimentoAluno;
 	private JLabel lblCpfAluno;
 	private JLabel lblMatriculaAluno;
-	private JLabel lblNewLabel_5;
-	private JLabel lblNewLabel_6;
-	private JLabel lblNewLabel_7;
-	private JLabel lblNewLabel_8;
-	private JLabel lblNewLabel_9;
-	private JButton btnNewButton_1;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JLabel lblCadastroProfessor;
+	private JLabel lblNomeProfessor;
+	private JLabel lblNascimentoProfessor;
+	private JLabel lblCpfProfessor;
+	private JLabel lblSiapeProfessor;
+	private JButton btnCadastraProfessor;
+	private JTextField textFieldNomeProfessor;
+	private JTextField textFieldNascimentoProfessor;
+	private JTextField textFieldCpfProfessor;
+	private JTextField textFieldSiapeProfessor;
 	private JButton btnConsultaAlunos;
-	private JButton btnNewButton_3;
+	private JButton btnConsultaProfessores;
 	private ArrayList<Aluno> alunos;
 	private ArrayList<Professor> professores;
 
@@ -102,8 +102,8 @@ public class Exercicio3 extends JFrame {
 
 		JButton btnCadastroAluno = new JButton("Cadastrar aluno");
 		btnCadastroAluno.setBounds(43, 181, 144, 23);
-		btnCadastroAluno.addActionListener(new ActionListener() {
 
+		btnCadastroAluno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nomeAluno = textFieldNome.getText();
 				String dataNascimento = textFieldNascimento.getText();
@@ -111,21 +111,27 @@ public class Exercicio3 extends JFrame {
 				String matricula = textFieldMatricula.getText();
 
 				if (!dataNascimento.isEmpty()) {
+
 					Date nacimento = new Date(dataNascimento);
 					aluninho.setDataNasc(nacimento);
+
 				} else {
 					JOptionPane.showMessageDialog(null, "Digite a data de nascimento!");
 				}
 
 				if (!nomeAluno.isEmpty()) {
+
 					aluninho.setNome(nomeAluno);
+
 				} else {
 					JOptionPane.showMessageDialog(null, "Digite o nome do aluno!");
 				}
 
 				if (!cpf.isEmpty()) {
+
 					Long cpfAluno = Long.valueOf(cpf);
 					aluninho.setCpf(cpfAluno);
+
 				} else {
 					JOptionPane.showMessageDialog(null, "Digite o cpf do aluno!");
 				}
@@ -169,49 +175,95 @@ public class Exercicio3 extends JFrame {
 		lblMatriculaAluno.setBounds(10, 143, 46, 14);
 		contentPane.add(lblMatriculaAluno);
 
-		lblNewLabel_5 = new JLabel("Cadastro professor");
-		lblNewLabel_5.setBounds(268, 21, 98, 14);
-		contentPane.add(lblNewLabel_5);
+		lblCadastroProfessor = new JLabel("Cadastro professor");
+		lblCadastroProfessor.setBounds(268, 21, 98, 14);
+		contentPane.add(lblCadastroProfessor);
 
-		lblNewLabel_6 = new JLabel("Nome");
-		lblNewLabel_6.setBounds(268, 49, 46, 14);
-		contentPane.add(lblNewLabel_6);
+		lblNomeProfessor = new JLabel("Nome");
+		lblNomeProfessor.setBounds(268, 49, 46, 14);
+		contentPane.add(lblNomeProfessor);
 
-		lblNewLabel_7 = new JLabel("Nascimento");
-		lblNewLabel_7.setBounds(268, 80, 65, 14);
-		contentPane.add(lblNewLabel_7);
+		lblNascimentoProfessor = new JLabel("Nascimento");
+		lblNascimentoProfessor.setBounds(268, 80, 65, 14);
+		contentPane.add(lblNascimentoProfessor);
 
-		lblNewLabel_8 = new JLabel("CPF");
-		lblNewLabel_8.setBounds(268, 111, 26, 14);
-		contentPane.add(lblNewLabel_8);
+		lblCpfProfessor = new JLabel("CPF");
+		lblCpfProfessor.setBounds(268, 111, 26, 14);
+		contentPane.add(lblCpfProfessor);
 
-		lblNewLabel_9 = new JLabel("Siape");
-		lblNewLabel_9.setBounds(268, 142, 46, 14);
-		contentPane.add(lblNewLabel_9);
+		lblSiapeProfessor = new JLabel("Siape");
+		lblSiapeProfessor.setBounds(268, 142, 46, 14);
+		contentPane.add(lblSiapeProfessor);
 
-		btnNewButton_1 = new JButton("Cadastrar professor");
-		btnNewButton_1.setBounds(280, 181, 144, 23);
-		contentPane.add(btnNewButton_1);
+		btnCadastraProfessor = new JButton("Cadastrar professor");
+		btnCadastraProfessor.setBounds(280, 181, 144, 23);
+		btnCadastraProfessor.addActionListener(new ActionListener() {
 
-		textField_4 = new JTextField();
-		textField_4.setBounds(338, 46, 86, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String nome = textFieldNomeProfessor.getText();
+				String cpf = textFieldCpfProfessor.getText();
+				String nascimentoProf = textFieldNascimentoProfessor.getText();
+				String siape = textFieldSiapeProfessor.getText();
 
-		textField_5 = new JTextField();
-		textField_5.setBounds(338, 77, 86, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
+				if (!nome.isEmpty()) {
 
-		textField_6 = new JTextField();
-		textField_6.setBounds(338, 108, 86, 20);
-		contentPane.add(textField_6);
-		textField_6.setColumns(10);
+					prof.setNome(nome);
 
-		textField_7 = new JTextField();
-		textField_7.setBounds(338, 139, 86, 20);
-		contentPane.add(textField_7);
-		textField_7.setColumns(10);
+				} else {
+					JOptionPane.showMessageDialog(null, "Digite o nome do professor!");
+				}
+
+				if (!cpf.isEmpty()) {
+					Long cpfProf = Long.valueOf(cpf);
+					prof.setCpf(cpfProf);
+				} else {
+					JOptionPane.showMessageDialog(null, "Digite o CPF do professor!");
+				}
+
+				if (!siape.isEmpty()) {
+					Long siapeProf = Long.valueOf(siape);
+					prof.setSiape(siapeProf);
+				} else {
+					JOptionPane.showMessageDialog(null, "Digite o código siape do professor!");
+				}
+
+				if (!nascimentoProf.isEmpty()) {
+					Date nacimento = new Date(nascimentoProf);
+					prof.setDataNasc(nacimento);
+				} else {
+					JOptionPane.showMessageDialog(null, "Digite a data de nascimento do professor!!");
+				}
+				professores.add(prof);
+				JOptionPane.showMessageDialog(null, "Professor cadastrado!");
+				textFieldNomeProfessor.setText(null);
+				textFieldCpfProfessor.setText(null);
+				textFieldNascimentoProfessor.setText(null);
+				textFieldSiapeProfessor.setText(null);
+			}
+
+		});
+		contentPane.add(btnCadastraProfessor);
+
+		textFieldNomeProfessor = new JTextField();
+		textFieldNomeProfessor.setBounds(338, 46, 86, 20);
+		contentPane.add(textFieldNomeProfessor);
+		textFieldNomeProfessor.setColumns(10);
+
+		textFieldNascimentoProfessor = new JTextField();
+		textFieldNascimentoProfessor.setBounds(338, 77, 86, 20);
+		contentPane.add(textFieldNascimentoProfessor);
+		textFieldNascimentoProfessor.setColumns(10);
+
+		textFieldCpfProfessor = new JTextField();
+		textFieldCpfProfessor.setBounds(338, 108, 86, 20);
+		contentPane.add(textFieldCpfProfessor);
+		textFieldCpfProfessor.setColumns(10);
+
+		textFieldSiapeProfessor = new JTextField();
+		textFieldSiapeProfessor.setBounds(338, 139, 86, 20);
+		contentPane.add(textFieldSiapeProfessor);
+		textFieldSiapeProfessor.setColumns(10);
 
 		btnConsultaAlunos = new JButton("Consultar alunos");
 		btnConsultaAlunos.setBounds(43, 227, 144, 23);
@@ -219,25 +271,25 @@ public class Exercicio3 extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
-				JOptionPane.showMessageDialog(null, forAlunos(alunos));
+				JOptionPane.showMessageDialog(null, alunos.toString());
 			}
 
 		});
+
 		contentPane.add(btnConsultaAlunos);
 
-		btnNewButton_3 = new JButton("Consultar professores");
-		btnNewButton_3.setBounds(280, 227, 144, 23);
-		contentPane.add(btnNewButton_3);
+		btnConsultaProfessores = new JButton("Consultar professores");
+		btnConsultaProfessores.setBounds(280, 227, 144, 23);
+
+		btnConsultaProfessores.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, professores.toString());
+
+			}
+
+		});
+		contentPane.add(btnConsultaProfessores);
 	}
 
-	public ArrayList<Aluno> forAlunos(ArrayList<Aluno> alunos) {
-		for (Aluno aluno : alunos) {
-	
-			aluno.getNome();
-			aluno.getCpf();
-			aluno.getMatricula();
-			aluno.getDataNasc();
-		}
-		return alunos;
-	}
 }

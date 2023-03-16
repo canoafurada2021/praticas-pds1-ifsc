@@ -11,5 +11,9 @@ public void setSiape(Long siape) {
 	this.siape = siape;
 }
 
-	
+	@Override
+	public String toString() {
+		return "Nome:" + this.getNome() + "\n Siape:" + this.getSiape();
+
+	}
 }
